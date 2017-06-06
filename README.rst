@@ -21,15 +21,12 @@ Install
 
     pip install acclaim_badges
 
-2. Add "acclaim_badges" to your INSTALLED_APPS setting for EDX lms like this::
+2. Add "acclaim_badges" to your INSTALLED_APPS ``/edx-platform/lms/envs/common.py`` like this::
     
     INSTALLED_APPS = [
         ...
         'acclaim_badges',
     ]
-
-
-    Note: this file is usually located at ``/edx-platform/lms/envs/common.py``
 
 3. Include the acclaim_badges URL conf in ``lms/urls.py`` like this::
 

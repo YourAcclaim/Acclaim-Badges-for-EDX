@@ -17,7 +17,11 @@ then listens for course complete events, and issues badges if the student obtain
 
 Install
 ------------------------
-1. Add "acclaim_badges" to your INSTALLED_APPS setting for EDX lms like this::
+1. Install "acclaim_badges" using pip::
+
+    pip install acclaim_badges
+
+2. Add "acclaim_badges" to your INSTALLED_APPS setting for EDX lms like this::
     
     INSTALLED_APPS = [
         ...
@@ -26,23 +30,23 @@ Install
 
 Note: this file is usually located at ``/edx-platform/lms/envs/common.py``
 
-2. Include the acclaim_badges URLconf in your project urls.py like this::
+3. Include the acclaim_badges URLconf in your project urls.py like this::
 
     urlpatterns += (
         url(r'^acclaim/', include('acclaim_badges.urls')),
     )
 
-3. The authorization token field is encypted.  create a AES-256 keyset using keyzar::
+4. The authorization token field is encypted.  create a AES-256 keyset using keyzar::
 
     $ mkdir fieldkeys
     $ keyczart create --location=fieldkeys --purpose=crypt
     $ keyczart addkey --location=fieldkeys --status=primary --size=256
 
-4. Add keyset location to ``/edx-platform/lms/envs/common.py``::
+5. Add keyset location to ``/edx-platform/lms/envs/common.py``::
 
     ENCRYPTED_FIELDS_KEYDIR = '/path/to/fieldkeys'
 
-5. Run ``./manage.py lms syncdb --settings aws`` to create the acclaim_badges lms app.
+6. Run ``./manage.py lms syncdb --settings aws`` to create the acclaim_badges lms app.
 
 Usage
 -------------

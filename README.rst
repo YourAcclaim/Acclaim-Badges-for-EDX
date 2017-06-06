@@ -66,6 +66,10 @@ The following useful URLs are made available after installation:
 Note: when defining a mapping, the dropdown will populate with badge templates
 if the Acclaim API call is successful (valid token and orgainzation combination are used).
 
+Troubleshooting
+---------------
+Debugging info is made available in the file ``edx.log``.  This file can be found under the ``/var/log/lms`` directory.
+
 Documentation
 -------------
 

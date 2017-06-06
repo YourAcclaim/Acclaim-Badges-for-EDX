@@ -39,9 +39,9 @@ setup(
     version=VERSION,
     description="""Acclaim Badges for EDX""",
     long_description=README + '\n\n' + CHANGELOG,
-    author='acclaim',
+    author='Acclaim',
     author_email='yancy.ribbens@gmail.com',
-    url='https://github.com/edx/acclaim-badges',
+    url='https://github.com/YourAcclaim/Acclaim-Badges-for-EDX',
     packages=[
         'acclaim_badges',
     ],

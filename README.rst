@@ -28,7 +28,8 @@ Install
         'acclaim_badges',
     ]
 
-Note: this file is usually located at ``/edx-platform/lms/envs/common.py``
+
+    Note: this file is usually located at ``/edx-platform/lms/envs/common.py``
 
 3. Include the acclaim_badges URL conf in ``lms/urls.py`` like this::
 

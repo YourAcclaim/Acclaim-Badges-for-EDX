@@ -30,13 +30,13 @@ Install
 
 Note: this file is usually located at ``/edx-platform/lms/envs/common.py``
 
-3. Include the acclaim_badges URLconf in your project urls.py like this::
+3. Include the acclaim_badges URL conf in ``lms/urls.py`` like this::
 
     urlpatterns += (
         url(r'^acclaim/', include('acclaim_badges.urls')),
     )
 
-4. The authorization token field is encypted.  create a AES-256 keyset using keyzar::
+4. The authorization token field will be encypted.  create a AES-256 keyset using keyzar for encryption and decryption::
 
     $ mkdir fieldkeys
     $ keyczart create --location=fieldkeys --purpose=crypt

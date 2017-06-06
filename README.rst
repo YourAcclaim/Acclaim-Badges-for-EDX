@@ -48,13 +48,10 @@ Note: this file is usually located at ``/edx-platform/lms/envs/common.py``
 
 6. Run ``./manage.py lms syncdb --settings aws`` to create the acclaim_badges lms app.
 
-3. Include the acclaim_badges URL conf in ``lms/urls.py`` like this::
+7. Depending on how assets are configured, you'll need to run ``collectstatic`` to make css and images available.::
 
     ./manage.py lms --settings aws collectstatic
     
-7. Depending on how assets are configured, you'll need to run ``collectstatic`` to make css and images available.::
-    ./manage.py lms --settings aws collectstatic
-
 8. Restart webserver
 
 Usage

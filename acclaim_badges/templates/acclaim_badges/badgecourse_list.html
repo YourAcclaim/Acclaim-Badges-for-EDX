@@ -1,0 +1,72 @@
+## mako
+<%! import json %>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.js_utils import (
+    dump_js_escaped_json, js_escaped_string
+)
+%>
+<%namespace name='static' file='/static_content.html'/>
+<%inherit file="/main.html" />
+
+<%block name="bodyclass">view-teams view-in-course course js</%block>
+<%block name="pagetitle">${_("Acclaim")}</%block>
+
+<%block name="headextra">
+<%static:css group='style-course-vendor'/>
+<%static:css group='style-course'/>
+<%include file="../discussion/_js_head_dependencies.html" />
+</%block>
+
+<%!
+from django.core.urlresolvers import reverse
+%>
+
+<link rel="stylesheet" type="text/css" href="/static/acclaim_badges/css/acclaim.css">
+
+<div class="container">
+  <div class="acclaim-wrapper">
+
+      <a class="acclaim-buttons" href="${ reverse('acclaim-tokens') }"><< Back to Tokens</a>
+      <img class="acclaim-logo" src="/static/acclaim_badges/img/acclaim_logo.gif" height="39" width="160">
+
+      <div class="wrapper-test">
+        % if len(object_list) == 0:
+          <div class="wrapper-inner">
+            <h3 class="acclaim-page-title">Edit Course Mappings</h3>
+            <div class="acclaim-button">
+              <a class="acclaim-button-text" href="${ reverse('badge-course-add') }">Add New</a>
+            </div>
+          </div>
+        % else:
+
+          <div class="wrapper-inner">
+            <h3 class="acclaim-page-title">Edit Course Mappings</h3>
+            <div class="acclaim-button">
+              <a class="acclaim-button-text" href="${ reverse('badge-course-add') }">Add New</a>
+            </div>
+          </div>
+          <table class="acclaim">
+            <tr>
+	      <th>Course Name</th>
+              <th>Badge Name</th>
+              <th>Badge Template ID</th>
+              <th></th>
+            </tr>
+             % for course in object_list:
+             <tr>
+		<td> ${ course.course_name } </td>
+                <td> ${ json.loads(course.badge_template)[1] } </td>
+                <td> ${ json.loads(course.badge_template)[0] } </td>
+                <td>
+                  <a href="${ reverse('badge-course-update', args=[str(course.id)]) }">edit</a>
+                  <a href="${ reverse('badge-course-delete', args=[str(course.id)]) }">delete</a>
+                </td>
+             </tr>
+             % endfor
+          </table>
+          % endif
+      </div>
+
+  </div>
+</div>
